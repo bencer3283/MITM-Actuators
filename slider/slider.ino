@@ -19,9 +19,9 @@ void loop() {
         //   speed = Serial.readString();
         // }
         int potpos = analogRead(A0);
-        if (potpos > 980) {
+        if (potpos > 950) {
           // Serial.println("Forward_end");
-          while (analogRead(A0) >= 980) {
+          while (analogRead(A0) >= 950) {
             analogWrite(A2, speed.toInt());
             analogWrite(A3, 0);
           }
@@ -39,9 +39,9 @@ void loop() {
         //   speed = Serial.readString();
         // }
         int potpos = analogRead(A0);
-        if (potpos < 50) {
+        if (potpos < 90) {
           // Serial.println("Backward_end");
-          while (analogRead(A0) <= 50) {
+          while (analogRead(A0) <= 90) {
             analogWrite(A3, speed.toInt());
             analogWrite(A2, 0);
           }
