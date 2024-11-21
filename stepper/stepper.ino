@@ -12,7 +12,8 @@ pinMode(IN3, OUTPUT);
 pinMode(IN4, OUTPUT);
 }
 void loop() {
-for(int i=0; i<10000; i++){
+Serial.println(Direction);
+for(int i=0; i<30000; i++){
 stepper(1);
 delayMicroseconds(1000);
 }
