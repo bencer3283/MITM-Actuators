@@ -42,8 +42,16 @@ void loop() {
         }
         else {
           // Serial.println("Forward");
-          analogWrite(A3, speedInt);
-          analogWrite(A2, 0);
+          int touch = digitalRead(2);
+          // Serial.println(touch);
+          if (touch == 0) {
+            analogWrite(A3, speedInt);
+            analogWrite(A2, 0);
+          } else {
+            analogWrite(A3, 0);
+            analogWrite(A2, 0);
+          }
+          
         }
         
       } 
@@ -65,8 +73,15 @@ void loop() {
         }
         else {
           // Serial.println("Backward");
-          analogWrite(A2, speedInt);
-          analogWrite(A3, 0);
+          int touch = digitalRead(2);
+          // Serial.println(touch);
+          if (touch == 0) {
+            analogWrite(A2, speedInt);
+            analogWrite(A3, 0);
+          } else {
+            analogWrite(A3, 0);
+            analogWrite(A2, 0);
+          }
         }
       }
       for(int i=0; i<1250*speedInt/250+2500; i++){
