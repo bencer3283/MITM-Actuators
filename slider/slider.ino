@@ -22,7 +22,9 @@ void loop() {
   // put your main code here, to run repeatedly:
   if (Serial.available()) {
     speed = Serial.readString();
-    if (speed.toInt() >= 150) {
+    int speedInt = speed.toInt();
+    // Serial.println(speedInt);
+    if (speedInt >= 150) {
       isForward = true;
       // Serial.println(potpos);
       while (isForward) {
@@ -33,14 +35,14 @@ void loop() {
         if (potpos > 950) {
           // Serial.println("Forward_end");
           while (analogRead(A0) >= 950) {
-            analogWrite(A2, speed.toInt());
+            analogWrite(A2, speedInt);
             analogWrite(A3, 0);
           }
           isForward = false;
         }
         else {
           // Serial.println("Forward");
-          analogWrite(A3, speed.toInt());
+          analogWrite(A3, speedInt);
           analogWrite(A2, 0);
         }
         
@@ -53,7 +55,7 @@ void loop() {
         if (potpos < 90) {
           // Serial.println("Backward_end");
           while (analogRead(A0) <= 90) {
-            analogWrite(A3, speed.toInt());
+            analogWrite(A3, speedInt);
             analogWrite(A2, 0);
           }
           isForward = true;
@@ -63,11 +65,11 @@ void loop() {
         }
         else {
           // Serial.println("Backward");
-          analogWrite(A2, speed.toInt());
+          analogWrite(A2, speedInt);
           analogWrite(A3, 0);
         }
       }
-      for(int i=0; i<1250*speed.toInt()/250+2500; i++){
+      for(int i=0; i<1250*speedInt/250+2500; i++){
         stepper(1);
         delayMicroseconds(1000);
       }
