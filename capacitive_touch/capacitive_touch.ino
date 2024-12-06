@@ -10,7 +10,7 @@ void loop() {
   // put your main code here, to run repeatedly:
   int output = analogRead(A0);
   // Serial.println(reading / 50);
-  if (output > 23) {
+  if (output > 175) {
     touch = true;
   }
   sample++;
@@ -18,9 +18,9 @@ void loop() {
     sample = 0;
     Serial.println(touch);
     if (touch) {
-      digitalWrite(D0, 1);
-    } else {
       digitalWrite(D0, 0);
+    } else {
+      digitalWrite(D0, 1);
     }
     touch = false;
   }

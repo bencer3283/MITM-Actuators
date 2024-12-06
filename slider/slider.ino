@@ -43,7 +43,7 @@ void loop() {
         else {
           // Serial.println("Forward");
           int touch = digitalRead(2);
-          // Serial.println(touch);
+          //Serial.println(touch);
           if (touch == 0) {
             analogWrite(A3, speedInt);
             analogWrite(A2, 0);
@@ -74,7 +74,7 @@ void loop() {
         else {
           // Serial.println("Backward");
           int touch = digitalRead(2);
-          // Serial.println(touch);
+          //Serial.println(touch);
           if (touch == 0) {
             analogWrite(A2, speedInt);
             analogWrite(A3, 0);
